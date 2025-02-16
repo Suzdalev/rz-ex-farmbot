@@ -19,37 +19,36 @@ def focus_window(window_title):
         print(f"Window '{window_title}' not found.")
         return False
 
-def press_key(key):
+def press_key(key, sleep=0.3):
     """Simulates pressing the '1' key."""
     pyautogui.press(key)
-    print(f"Pressed key {key}")
+    print(f"pressed '{key}', sleeping {sleep} seconds")
+    time.sleep(sleep)
 
 def focus_and_press_loop(window_title):
+    global lastbuff
+    global paused
     """Continuously focuses the window and presses '1' every 10 seconds."""
     while True:
         try:
+            if keyboard.is_pressed('p'):
+                paused = not paused
+                if paused:
+                    print("Bot is paused")
+                    time.sleep(5)
+                else:
+                    print("Bot continues ")
+                time.sleep(0.2)
+            if paused:
+                continue
             if focus_window(window_title) and not paused:
                 press_key('1')
-                time.sleep(0.4)
                 press_key('2')
-                time.sleep(0.4)
-                press_key('1')
-                time.sleep(0.4)
 
             # check buffs
             if time.time() - lastbuff > 20*60.0:# 20 minutes
-                press_key('5')
-                time.sleep(2)
-                press_key('6')
-                time.sleep(2)
-                press_key('7')
-                time.sleep(2)
-                press_key('8')
-                time.sleep(2)
-                press_key('9')
-                time.sleep(2)
-                press_key('0')
-                time.sleep(2)
+                for number in range(4,9):
+                    press_key(str(number), 2.0)
                 lastbuff = time.time()
         except Exception as e:
             print(f"Error: {e}")
