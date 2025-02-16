@@ -4,6 +4,7 @@ import pyautogui
 import random
 import keyboard
 
+
 def focus_window(window_title):
     """Focuses the specified window."""
     window = gw.getWindowsWithTitle(window_title)
