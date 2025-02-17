@@ -20,6 +20,13 @@ num_to_click = None
 TARGET_COLOR = (255, 234, 0)  # Yellow text color
 THRESHOLD = 1  # Allowed color deviation
 reader = easyocr.Reader(['en'])
+
+def log(msg):
+    total = f"{datetime.datetime.now().isoformat()} - {msg}"
+    with open('bot.log', 'a') as logfile:
+        logfile.write(total + '\n')
+    print(total)
+log(f"\n\n=============== Bot started {datetime.datetime.now().isoformat()} ===============\n\n")
 def filter_by_color(image_path, target_color=TARGET_COLOR, threshold=THRESHOLD):
     """ Keeps only pixels near the target color and turns others black. """
     image = Image.open(image_path).convert("RGB")
@@ -49,10 +56,10 @@ def get_number_to_click():
     filtered_path = filter_by_color(input_image)
     text_results = recognize_text(filtered_path)
 
-    print("Recognized Text:")
+    log("Recognized Text:")
     for bbox, text, confidence in text_results:
         if "".join(text).__contains__('Click on the number'):
-            print(f"FOUND: {text}")
+            log(f"FOUND: {text}")
             number= text.split()[-1]
             for ch in number:
                 try:
@@ -70,8 +77,8 @@ def screenshot_checker():
             screenshot = sct.shot(output='screenshot.png')
         num_to_click = get_number_to_click()
         if num_to_click is not None:
-            print("No macro numbers detected")
-        time.sleep(25)
+            log("No macro numbers detected")
+        time.sleep(10)
 
 
 def focus_window(window_title):
@@ -84,7 +91,7 @@ def focus_window(window_title):
         #print(f"Focused on window: {window_title}")
         return True
     else:
-        print(f"Window '{window_title}' not found.")
+        log(f"Window '{window_title}' not found.")
         return False
 
 def press_key(key, sleep=0.3):
@@ -97,7 +104,7 @@ def press_shift_key(key, sleep=0.3):
     """Simulates pressing the '1' key."""
     with pyautogui.hold('shift'):
         pyautogui.press(key)
-    print(f"pressed 'Shift+{key}', sleeping {sleep} seconds")
+    log(f"pressed 'Shift+{key}', sleeping {sleep} seconds")
     time.sleep(sleep)
 
 def focus_and_press_loop(window_title):
@@ -106,7 +113,7 @@ def focus_and_press_loop(window_title):
     global num_to_click
     """Continuously focuses the window and presses '1' every 10 seconds."""
     while True:
-        print(f"Macro number: {num_to_click}")
+        log(f"Macro number: {num_to_click}")
         try:
             if keyboard.is_pressed('p'):
                 paused = not paused
@@ -140,7 +147,7 @@ def focus_and_press_loop(window_title):
                     press_key(str(number), 2.0)
                 lastbuff = time.time()
         except Exception as e:
-            print(f"Error: {e}")
+            log(f"Error: {e}")
         time.sleep(random.randint(0,2))
 
 if __name__ == "__main__":
