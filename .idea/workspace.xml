@@ -203,7 +203,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739787765764</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="antimacro shift key press">
+      <option name="closed" value="true" />
+      <created>1739787908572</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1739787908572</updated>
+    </task>
+    <task id="LOCAL-00011" summary="antimacro shift key press">
+      <option name="closed" value="true" />
+      <created>1739787914409</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1739787914409</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

@@ -122,29 +122,17 @@ def focus_and_press_loop(window_title):
         if num_to_click is not None:
             log(f"Macro number: {num_to_click}")
         try:
-            if keyboard.is_pressed('p'):
-                paused = not paused
-                if paused:
-                    print("Bot is paused")
-                    time.sleep(5)
-                else:
-                    print("Bot continues ")
-                time.sleep(0.2)
-            if paused:
-                continue
-
-            if num_to_click is not None:
-                # Antimacro
-                with mss.mss() as sct:
-                    screenshot = sct.shot(output='before_macro.png')
-                time.sleep(1)
-                press_shift_key(num_to_click)
-                time.sleep(1)
-                with mss.mss() as sct:
-                    screenshot = sct.shot(output='after_macro.png')
-                num_to_click = None
-
             if focus_window(window_title) and not paused:
+                if keyboard.is_pressed('p'):
+                    paused = not paused
+                    if paused:
+                        print("Bot is paused")
+                        time.sleep(5)
+                    else:
+                        print("Bot continues ")
+                    time.sleep(0.2)
+                if paused:
+                    continue
                 # check buffs
                 if time.time() - lastbuff > 20*60.0:# 20 minutes
                     for number in range(4,9):
@@ -153,6 +141,17 @@ def focus_and_press_loop(window_title):
 
                 press_key('1')
                 press_key('2')
+
+                if num_to_click is not None:
+                    # Antimacro
+                    with mss.mss() as sct:
+                        screenshot = sct.shot(output='before_macro.png')
+                    time.sleep(1)
+                    press_shift_key(num_to_click)
+                    time.sleep(1)
+                    with mss.mss() as sct:
+                        screenshot = sct.shot(output='after_macro.png')
+                    num_to_click = None
         except Exception as e:
             log(f"Error: {e}")
         time.sleep(random.randint(0,2))
