@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c7ce73f0-978c-47bd-b25f-7ee9ab509518" name="Changes" comment="logger" />
+    <list default="true" id="c7ce73f0-978c-47bd-b25f-7ee9ab509518" name="Changes" comment="logger">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +62,7 @@
       <recent name="C:\Users\ihor\AppData\Roaming\JetBrains\PyCharmCE2024.1\scratches" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.scratch">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="RZ-farm-bot" />
       <option name="ENV_FILES" value="" />
@@ -107,8 +109,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
@@ -176,7 +178,23 @@
       <option name="project" value="LOCAL" />
       <updated>1739784225692</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="logger">
+      <option name="closed" value="true" />
+      <created>1739785106889</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1739785106889</updated>
+    </task>
+    <task id="LOCAL-00008" summary="logger">
+      <option name="closed" value="true" />
+      <created>1739786558602</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1739786558602</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

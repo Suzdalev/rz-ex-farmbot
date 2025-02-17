@@ -102,8 +102,11 @@ def press_key(key, sleep=0.3):
 
 def press_shift_key(key, sleep=0.3):
     """Simulates pressing the '1' key."""
-    with pyautogui.hold('shift'):
-        pyautogui.press(key)
+    pyautogui.keyDown("shift")
+    time.sleep(0.1)
+    pyautogui.press(key)
+    time.sleep(0.1)
+    pyautogui.keyUp("shift")
     log(f"pressed 'Shift+{key}', sleeping {sleep} seconds")
     time.sleep(sleep)
 
