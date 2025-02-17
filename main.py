@@ -72,13 +72,16 @@ def get_number_to_click():
 def screenshot_checker():
     global num_to_click
     while True:
-        os.rename("screenshot.png",f"scr{datetime.datetime.now().isoformat().replace(':', '-').replace('.','')}.png")
-        with mss.mss() as sct:
-            screenshot = sct.shot(output='screenshot.png')
-        num_to_click = get_number_to_click()
-        if num_to_click is not None:
-            log("No macro numbers detected")
-        time.sleep(10)
+        try:
+            os.rename("screenshot.png",f"scr{datetime.datetime.now().isoformat().replace(':', '-').replace('.','')}.png")
+            with mss.mss() as sct:
+                screenshot = sct.shot(output='screenshot.png')
+            num_to_click = get_number_to_click()
+            if num_to_click is not None:
+                log("No macro numbers detected")
+            time.sleep(10)
+        except Exception as e:
+            log(e)
 
 
 def focus_window(window_title):
@@ -142,14 +145,14 @@ def focus_and_press_loop(window_title):
                 num_to_click = None
 
             if focus_window(window_title) and not paused:
+                # check buffs
+                if time.time() - lastbuff > 20*60.0:# 20 minutes
+                    for number in range(4,9):
+                        press_key(str(number), 2.0)
+                    lastbuff = time.time()
+
                 press_key('1')
                 press_key('2')
-
-            # check buffs
-            if time.time() - lastbuff > 20*60.0:# 20 minutes
-                for number in range(4,9):
-                    press_key(str(number), 2.0)
-                lastbuff = time.time()
         except Exception as e:
             log(f"Error: {e}")
         time.sleep(random.randint(0,2))
