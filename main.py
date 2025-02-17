@@ -113,7 +113,8 @@ def focus_and_press_loop(window_title):
     global num_to_click
     """Continuously focuses the window and presses '1' every 10 seconds."""
     while True:
-        log(f"Macro number: {num_to_click}")
+        if num_to_click is not None:
+            log(f"Macro number: {num_to_click}")
         try:
             if keyboard.is_pressed('p'):
                 paused = not paused
